@@ -1,18 +1,10 @@
-FROM gliderlabs/alpine:3.1
+FROM python:2.7.10
 
-RUN apk add --update \
-    python \
-    python-dev \
-    py-pip \
-    build-base \
-    supervisor \
-  && rm -rf /var/cache/apk/*
+WORKDIR /code
 
 COPY requirements.txt /code/requirements.txt
-WORKDIR /code
 RUN pip install -r requirements.txt
 
-ADD supervisord.conf /etc/supervisord.conf
-ADD . /code
+COPY tutum-schedule.py /code/tutum-schedule.py
 
-CMD ["/usr/bin/supervisord"]
+CMD python /code/tutum-schedule.py
