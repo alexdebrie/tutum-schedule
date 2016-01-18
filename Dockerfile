@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 
 COPY tutum-schedule.py /code/tutum-schedule.py
 
-CMD /usr/bin/python /code/tutum-schedule.py
+CMD ["/usr/bin/python", "/code/tutum-schedule.py"]
