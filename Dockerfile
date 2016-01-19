@@ -5,14 +5,13 @@ RUN apk add --update \
     python-dev \
     py-pip \
     build-base \
-    supervisor \
   && rm -rf /var/cache/apk/*
 
-COPY requirements.txt /code/requirements.txt
 WORKDIR /code
+
+COPY requirements.txt /code/requirements.txt
 RUN pip install -r requirements.txt
 
-ADD supervisord.conf /etc/supervisord.conf
-ADD . /code
+COPY tutum-schedule.py /code/tutum-schedule.py
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/python", "/code/tutum-schedule.py"]

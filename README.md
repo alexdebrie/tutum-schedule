@@ -65,3 +65,4 @@ desired configuration. Once you're ready, run:
 
 Go to your Tutum account and deploy the Service. __Be sure to assign the
 `global` role to the Service so it can use the Tutum API on your behalf.__
+Be sure to turn on __AutoRestart__ to __Always__ in Tutum for your service just in case python dies.
